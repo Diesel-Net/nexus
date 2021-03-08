@@ -1,0 +1,4 @@
+- name: docker-deploy
+  scm: git
+  src: "git@github.com:Diesel-Net/ansible-role-docker-deploy.git"
+  version: "1.0.2"
