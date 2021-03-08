@@ -1,0 +1,27 @@
+---
+kind: pipeline
+type: docker
+name: production pipeline
+
+clone:
+  depth: 1
+
+steps:
+
+  - name: deploy
+    image: plugins/ansible:3
+    settings:
+      playbook: deploy.yaml
+      galaxy: roles/requirements.yaml
+      inventory: inventories/production/hosts
+      private_key:
+        from_secret: ansible_private_key
+      vault_password:
+        from_secret: ansible_vault_password
+
+trigger:
+  branch:
+    - development
+  event:
+    - push
+...

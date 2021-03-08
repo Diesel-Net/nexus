@@ -1,0 +1,8 @@
+git_owner: '{{ lookup("env", "DRONE_REPO_NAMESPACE") }}'
+git_repository: '{{ lookup("env", "DRONE_REPO_NAME") }}'
+git_branch: '{{ "production" if git_tag else drone_branch }}'
+git_version: '{{ git_tag if git_tag else drone_branch }}'
+git_tag: '{{ drone_tag }}'
+git_commit: '{{ drone_commit }}'
+git_commit_link: '{{ drone_commit_link }}'
+git_repository_url: '{{ lookup("env", "DRONE_REPO_LINK") }}'
