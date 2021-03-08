@@ -17,3 +17,7 @@ services:
     networks:
       - {{ docker_network }}
       
+networks:
+  {{ docker_network }}:
+    external:
+      name: {{ docker_network }}
