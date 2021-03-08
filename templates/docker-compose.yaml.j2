@@ -6,6 +6,7 @@ services:
   main:
     image: sonatype/nexus3:3.30.0
     volumes:
+      - {{ directories_ssl_certificates_host }}:{{ directories_ssl_certificates }}
       - {{ directories_data }}:/nexus-data
     user: "${UID}:${GID}"
     deploy:
