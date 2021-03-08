@@ -14,4 +14,6 @@ services:
         - traefik.http.services.{{ proxy_router_main }}.loadbalancer.server.port=8081
         - traefik.http.routers.{{ proxy_router_main }}.tls.certresolver=step-ca
         - traefik.http.routers.{{ proxy_router_main }}.rule=Host(`{{ proxy_domains | join('`,`') }}`)
+    networks:
+      - {{ docker_network }}
       
