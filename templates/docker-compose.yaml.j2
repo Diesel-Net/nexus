@@ -7,6 +7,7 @@ services:
     image: sonatype/nexus3:3.30.0
     volumes:
       - {{ directories_data }}:/nexus-data
+    user: "${UID}:${GID}"
     deploy:
       labels:
         - traefik.enable=true
