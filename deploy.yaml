@@ -3,6 +3,6 @@
 - hosts: all
   strategy: free
   roles:
-    - docker-deploy
+    - docker_deploy
 
 
