@@ -1,7 +1,7 @@
 roles:
 
-  - id: AC - 00485 Standard
-    name: OCC Developers
+  - id: Diesel-Net-Core
+    name: Core Developers
     description: Core Development Team
     privileges:
       - nx-repository-admin-*-*-add
@@ -18,8 +18,8 @@ roles:
       - nx-anonymous
       
 
-  - id: OCC-CICD
-    name: OCC CICD
+  - id: Diesel-Net-CICD
+    name: Diesel-Net CICD
     description: Continuos Integration, Deployment, & Automation
     privileges:
       - nx-repository-view-*-*-add
