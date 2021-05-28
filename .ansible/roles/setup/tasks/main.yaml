@@ -1,15 +1,21 @@
+
+
 - name: Tear down old stack if `clean_install` toggled
   shell: docker stack rm {{ git_repository }}_{{ git_branch }}
   when: clean_install
 
 - name: Remove the data directory if `clean_install` toggled
   file:
-    path: '{{ directories_data }}'
+    path: '{{ data_dir }}'
     state: absent
   become: yes
   when: clean_install
 
-- import_role:
+- include_role:
+    name: common
+    tasks_from: make_data_dir
+
+- include_role:
     name: docker_deploy
 
 - name: Wait for https://{{ proxy.main.host }} to be ready
@@ -22,23 +28,23 @@
   retries: 60
   delay: 1
 
-- name: Check to see if {{ directories_data }}/admin.password exists
+- name: Check to see if {{ data_dir }}/admin.password exists
   stat:
-    path: '{{ directories_data }}/admin.password'
+    path: '{{ data_dir }}/admin.password'
   register: first_install
 
 - debug:
-    msg: '{{ directories_data }}/admin.password exists!'
+    msg: '{{ data_dir }}/admin.password exists!'
   when: first_install.stat.exists
 
-- name: Grab contents of {{ directories_data }}/admin.password
+- name: Grab contents of {{ data_dir }}/admin.password
   wait_for:
-    path: '{{ directories_data }}/admin.password'
+    path: '{{ data_dir }}/admin.password'
     search_regex: (?P<password>^(.*)$)
   register: admin_credentials
   when: first_install.stat.exists
 
-- name: Contents of {{ directories_data }}/admin.password
+- name: Contents of {{ data_dir }}/admin.password
   debug:
     msg: "{{ admin_credentials['match_groupdict']['password'] }}"
   when: first_install.stat.exists
