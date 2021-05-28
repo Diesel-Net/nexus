@@ -1,6 +1,7 @@
 - include_role:
     name: docker
     tasks_from: stack_teardown
+  when: clean_install
 
 - name: Remove the data directory if `clean_install` toggled
   file:
