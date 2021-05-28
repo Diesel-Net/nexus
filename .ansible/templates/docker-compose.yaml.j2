@@ -7,7 +7,7 @@ services:
     image: sonatype/nexus3:3.30.0
     volumes:
       - {{ ssl_cert_dir }}:/etc/ssl/certs/
-      - {{ data_dir }}:/nexus-data
+      - {{ data_dir }}:/nexus-data/
     user: "${UID}:${GID}"
     deploy:
       labels:
@@ -20,9 +20,9 @@ services:
         - traefik.http.routers.{{ proxy.docker.router }}.rule=Host(`{{ proxy.docker.host }}`)
         - traefik.http.routers.{{ proxy.docker.router }}.service={{ proxy.docker.service }}
     networks:
-      - {{ docker_network_proxy }}
+      - {{ docker_network }}
       
 networks:
-  {{ docker_network_proxy }}:
+  {{ docker_network }}:
     external:
-      name: {{ docker_network_proxy }}
+      name: {{ docker_network }}
