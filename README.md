@@ -1,4 +1,4 @@
-[![Build Status](https://drone.occ.starbucks.net/api/badges/OCC/nexus/status.svg?ref=refs/heads/stable)](https://drone.occ.starbucks.net/OCC/nexus)
+[![Build Status](https://drone-ci.hopto.org/api/badges/Diesel-Net/nexus/status.svg?ref=refs/heads/stable)](https://drone-ci.hopto.org/Diesel-Net/nexus)
 
 # nexus
 SonaType Nexus 3 Repository Manager
@@ -15,7 +15,7 @@ e.g. `Authorization: Basic YWRtaW46bmV4dXM=`
 The `-u` flag can be used with `curl` to auto-encode the correct Basic-Auth headers for you. This is a great way to play around with the API and get familiar. The command below illustrates how to change the admin password programatically (usually prompted on the first login through the WebUI).
 
 ```bash
-curl -u admin:nexus3 'https://dev.nexus.occ.starbucks.net/service/rest/v1/security/users/admin/change-password' \
+curl -u admin:nexus3 'https://nexus.dev.diesel.net/service/rest/v1/security/users/admin/change-password' \
   -X 'PUT' \
   -H 'content-type: text/plain' \
   --data-raw 'newpass' \
@@ -28,7 +28,7 @@ curl -u admin:nexus3 'https://dev.nexus.occ.starbucks.net/service/rest/v1/securi
 Below is an example of how to create a `hosted apt` repository.
 
 ```bash
-curl -u admin:nexus3 'https://dev.nexus.occ.starbucks.net/service/rest/v1/repositories/apt/hosted' \
+curl -u admin:nexus3 'https://nexus.dev.diesel.net/service/rest/v1/repositories/apt/hosted' \
   -H 'accept: application/json' \
   -H 'content-type: application/json' \
   --data-raw $'{\n  "name": "internal-apt",\n  "online": true,\n  "storage": {\n    "blobStoreName": "default",\n    "strictContentTypeValidation": true,\n    "writePolicy": "allow_once"\n  },\n  "cleanup": {\n    "policyNames": [\n      "string"\n    ]\n  },\n  "component": {\n    "proprietaryComponents": true\n  },\n  "apt": {\n    "distribution": "bionic"\n  },\n  "aptSigning": {\n    "keypair": "string",\n    "passphrase": "string"\n  }\n}' \
@@ -42,7 +42,7 @@ curl -u admin:nexus3 'https://dev.nexus.occ.starbucks.net/service/rest/v1/reposi
 
 
 ```bash
-curl -u admin:nexus3 'https://dev.nexus.occ.starbucks.net/service/rest/internal/cleanup-policies' \
+curl -u admin:nexus3 'https://nexus.dev.diesel.net/service/rest/internal/cleanup-policies' \
   -H 'accept: application/json, text/plain, */*' \
   -H 'content-type: application/json;charset=UTF-8' \
   --data-raw '{"name":"cleanupRoutine","notes":"Remove docker images older than 90 days","format":"docker","criteriaLastBlobUpdated":"90"}' \
