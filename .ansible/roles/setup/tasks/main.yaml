@@ -1,8 +1,6 @@
-
-
-- name: Tear down old stack if `clean_install` toggled
-  shell: docker stack rm {{ git_repository }}_{{ git_branch }}
-  when: clean_install
+- include_role:
+    name: docker
+    tasks_from: stack_teardown
 
 - name: Remove the data directory if `clean_install` toggled
   file:
@@ -16,7 +14,8 @@
     tasks_from: make_data_dir
 
 - include_role:
-    name: docker_deploy
+    name: docker
+    tasks_from: stack_deploy
 
 - name: Wait for https://{{ proxy.main.host }} to be ready
   uri:
