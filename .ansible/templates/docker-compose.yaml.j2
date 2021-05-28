@@ -15,10 +15,12 @@ services:
         - traefik.http.services.{{ proxy.main.service }}.loadbalancer.server.port={{ proxy.main.port }}
         - traefik.http.routers.{{ proxy.main.router }}.rule=Host(`{{ proxy.main.host }}`)
         - traefik.http.routers.{{ proxy.main.router }}.service={{ proxy.main.service }}
+        - traefik.http.routers.{{ proxy.main.router }}.tls.certresolver=step-ca
 
         - traefik.http.services.{{ proxy.docker.service }}.loadbalancer.server.port={{ proxy.docker.port }}
         - traefik.http.routers.{{ proxy.docker.router }}.rule=Host(`{{ proxy.docker.host }}`)
         - traefik.http.routers.{{ proxy.docker.router }}.service={{ proxy.docker.service }}
+        - traefik.http.routers.{{ proxy.docker.router }}.tls.certresolver=step-ca
     networks:
       - {{ docker_network }}
       
