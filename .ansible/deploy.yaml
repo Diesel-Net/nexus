@@ -3,6 +3,7 @@
 - hosts: tools
   strategy: free
   roles:
+    - common
     - setup
     - configure_capabilities
     - configure_certificates
