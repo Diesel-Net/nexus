@@ -1,0 +1,29 @@
+roles:
+
+  - id: AC - 00485 Standard
+    name: OCC Developers
+    description: Core Development Team
+    privileges:
+      - nx-repository-admin-*-*-add
+      - nx-repository-admin-*-*-browse
+      - nx-repository-admin-*-*-edit
+      - nx-repository-admin-*-*-read
+      - nx-repository-view-*-*-add
+      - nx-repository-view-*-*-browse
+      - nx-repository-view-*-*-edit
+      - nx-repository-view-*-*-read
+      - nx-component-upload
+      - nx-apikey-all
+    roles:
+      - nx-anonymous
+      
+
+  - id: OCC-CICD
+    name: OCC CICD
+    description: Continuos Integration, Deployment, & Automation
+    privileges:
+      - nx-repository-view-*-*-add
+      - nx-repository-view-*-*-browse
+      - nx-repository-view-*-*-edit
+      - nx-repository-view-*-*-read
+      - nx-apikey-all

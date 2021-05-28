@@ -1,0 +1,5 @@
+- name: Configure capabilities
+  include_tasks: configure.yaml
+  loop: '{{ capabilities }}'
+  loop_control:
+    loop_var: payload

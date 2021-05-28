@@ -1,0 +1,7 @@
+- name: Configure users
+  include_tasks: configure.yaml
+  loop: '{{ payloads }}'
+  loop_control:
+    loop_var: payload
+  vars:
+    payloads: '{{ users }}'

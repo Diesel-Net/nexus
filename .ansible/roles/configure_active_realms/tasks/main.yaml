@@ -1,0 +1,4 @@
+- name: Configure active realms
+  include_tasks: configure.yaml
+  vars:
+    payload: '{{ active_realms }}'

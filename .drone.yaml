@@ -1,19 +1,35 @@
 ---
 kind: pipeline
 type: docker
-name: production pipeline
+name: development pipeline
 
 clone:
   depth: 1
 
 steps:
-
-  - name: deploy
+  - name: Clean install (data is wiped)
     image: plugins/ansible:3
+    environment:
+      ANSIBLE_CONFIG: .ansible/ansible.cfg
     settings:
-      playbook: deploy.yaml
-      galaxy: roles/requirements.yaml
-      inventory: inventories/production/hosts
+      playbook: .ansible/deploy.yaml
+      galaxy: .ansible/roles/requirements.yaml
+      inventory: .ansible/inventory/development/hosts
+      extra_vars:
+        - clean_install=yes
+      private_key:
+        from_secret: ansible_private_key
+      vault_password:
+        from_secret: ansible_vault_password
+
+  - name: Configuration update (data is not wiped)
+    image: plugins/ansible:3
+    environment:
+      ANSIBLE_CONFIG: .ansible/ansible.cfg
+    settings:
+      playbook: .ansible/deploy.yaml
+      galaxy: .ansible/roles/requirements.yaml
+      inventory: .ansible/inventory/development/hosts
       private_key:
         from_secret: ansible_private_key
       vault_password:
@@ -21,6 +37,35 @@ steps:
 
 trigger:
   branch:
+    - development
   event:
-    - tag
+    - push
+
+---
+kind: pipeline
+type: docker
+name: production pipeline
+
+clone:
+  depth: 1
+
+steps:
+  - name: Configuration update
+    image: plugins/ansible:3
+    environment:
+      ANSIBLE_CONFIG: .ansible/ansible.cfg
+    settings:
+      playbook: .ansible/deploy.yaml
+      galaxy: .ansible/roles/requirements.yaml
+      inventory: .ansible/inventory/production/hosts
+      private_key:
+        from_secret: ansible_private_key
+      vault_password:
+        from_secret: ansible_vault_password
+
+trigger:
+  branch:
+    - stable
+  event:
+    - push
 ...

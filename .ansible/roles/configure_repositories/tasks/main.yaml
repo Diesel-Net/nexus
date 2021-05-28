@@ -1,0 +1,12 @@
+# remove default repositories
+- include_tasks: remove.yaml
+  loop: '{{ default.repositories }}'
+  loop_control:
+    loop_var: repo
+
+# create/update repositories
+- include_tasks: configure.yaml
+  loop: '{{ repositories }}'
+  loop_control:
+    loop_var: repo
+  

@@ -1,0 +1,5 @@
+- name: Configure certificates
+  include_tasks: configure.yaml
+  loop: '{{ certificates }}'
+  loop_control:
+    loop_var: certificate

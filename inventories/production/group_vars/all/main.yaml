@@ -1,4 +1,0 @@
-env: "prod"
-
-proxy_domains:
-  - '{{ env }}.diesel.net'

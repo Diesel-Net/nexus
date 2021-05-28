@@ -1,0 +1,28 @@
+# docker-compose.yaml
+
+version: "3.8"
+services: 
+
+  main:
+    image: sonatype/nexus3:3.30.0
+    volumes:
+      - {{ ssl_cert_dir }}:/etc/ssl/certs/
+      - {{ data_dir }}:/nexus-data
+    user: "${UID}:${GID}"
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.http.services.{{ proxy.main.service }}.loadbalancer.server.port={{ proxy.main.port }}
+        - traefik.http.routers.{{ proxy.main.router }}.rule=Host(`{{ proxy.main.host }}`)
+        - traefik.http.routers.{{ proxy.main.router }}.service={{ proxy.main.service }}
+
+        - traefik.http.services.{{ proxy.docker.service }}.loadbalancer.server.port={{ proxy.docker.port }}
+        - traefik.http.routers.{{ proxy.docker.router }}.rule=Host(`{{ proxy.docker.host }}`)
+        - traefik.http.routers.{{ proxy.docker.router }}.service={{ proxy.docker.service }}
+    networks:
+      - {{ docker_network_proxy }}
+      
+networks:
+  {{ docker_network_proxy }}:
+    external:
+      name: {{ docker_network_proxy }}

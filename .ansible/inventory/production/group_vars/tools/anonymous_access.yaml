@@ -1,0 +1,6 @@
+anonymous_access:
+
+  - realmName: 'NexusAuthorizingRealm'
+    enabled: true
+    userId: anonymous
+    

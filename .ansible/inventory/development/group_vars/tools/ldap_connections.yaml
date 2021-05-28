@@ -1,0 +1,40 @@
+ldap_bind_password: !vault |
+  $ANSIBLE_VAULT;1.1;AES256
+  66383131326635653463303163663330646138656365393136323766356338666262326232303635
+  3862656662373331636366636164383930613037323264620a366132656434643135623336353839
+  62376364343532643439303937363635326235376335663966646634386661303365636562653661
+  6632646566353238610a333731643530643937376334313563633435663635663538636162323636
+  6464
+
+ldap_connections:
+  
+  - name: starbucks-ldap
+    protocol: LDAPS
+    useTrustStore: true
+    host: ms20065.starbucks.net
+    port: 636
+    searchBase: dc=starbucks,dc=net
+    authScheme: SIMPLE # enum: NONE, SIMPLE, DIGEST_MD5, CRAM_MD5
+    authRealm:
+    authUsername: CN=s-API_OCC,OU=Corp Service Accounts,OU=Corp,DC=starbucks,DC=net
+    connectionTimeoutSeconds: 30
+    connectionRetryDelaySeconds: 300
+    maxIncidentsCount: 3
+    userBaseDn: ''
+    userSubtree: true
+    userObjectClass: user
+    userLdapFilter: ''
+    userIdAttribute: SamAccountName
+    userRealNameAttribute: displayname
+    userEmailAddressAttribute: mail
+    userPasswordAttribute: ''
+    ldapGroupsAsRoles: true
+    groupType: DYNAMIC #enum STATIC, DYNAMIC
+    groupBaseDn:
+    groupSubtree: false
+    groupObjectClass:
+    groupIdAttribute:
+    groupMemberAttribute:
+    groupMemberFormat:
+    userMemberOfAttribute: memberOf
+    authPassword: '{{ ldap_bind_password }}'
