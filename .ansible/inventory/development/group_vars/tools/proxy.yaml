@@ -4,10 +4,10 @@ proxy:
     service: '{{ git_repository }}-{{ git_branch }}-main'
     port: 8081
     router: '{{ git_repository }}-{{ git_branch }}-main'
-    host: dev.nexus.occ.starbucks.net
+    host: nexus.dev.diesel.net
     
   docker: 
     service: '{{ git_repository }}-{{ git_branch }}-docker'
     port: 8082
     router: '{{ git_repository }}-{{ git_branch }}-docker'
-    host: dev.docker.nexus.occ.starbucks.net
+    host: docker.nexus.dev.diesel.net
