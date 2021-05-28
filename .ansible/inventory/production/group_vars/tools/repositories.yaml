@@ -4,7 +4,7 @@ repositories:
   - format: docker
     type: hosted
     payload:
-      name: occ-docker-hosted
+      name: diesel-docker-hosted
       online: true
       storage:
         blobStoreName: 'default'
@@ -23,7 +23,7 @@ repositories:
   - format: docker
     type: proxy
     payload:
-      name: occ-docker-proxy
+      name: diesel-docker-proxy
       online: true
       storage:
         blobStoreName: 'default'
@@ -58,7 +58,7 @@ repositories:
   - format: npm
     type: hosted
     payload:
-      name: occ-npm-hosted
+      name: diesel-npm-hosted
       online: true
       storage:
         blobStoreName: default
@@ -73,7 +73,7 @@ repositories:
   - format: npm
     type: proxy
     payload:
-      name: occ-npm-proxy
+      name: diesel-npm-proxy
       online: true
       storage:
         blobStoreName: default
@@ -100,40 +100,10 @@ repositories:
         removeNonCataloged: true
 
 
-  - format: nuget
-    type: hosted
-    payload:
-      name: starbucksgetsit
-      online: true
-      storage:
-        blobStoreName: default
-        strictContentTypeValidation: true
-        writePolicy: allow_once
-      cleanup:
-        policyNames: []
-      component:
-        proprietaryComponents: true
-
-
-  - format: nuget
-    type: hosted
-    payload:
-      name: starbucksgetsit-dev
-      online: true
-      storage:
-        blobStoreName: default
-        strictContentTypeValidation: true
-        writePolicy: allow_once
-      cleanup:
-        policyNames: []
-      component:
-        proprietaryComponents: true
-
-
   - format: pypi
     type: hosted
     payload:
-      name: occ-pypi-hosted
+      name: diesel-pypi-hosted
       online: true
       storage:
         blobStoreName: default
@@ -148,7 +118,7 @@ repositories:
   - format: pypi
     type: proxy
     payload:
-      name: occ-pypi-proxy
+      name: diesel-pypi-proxy
       online: true
       storage:
         blobStoreName: default
