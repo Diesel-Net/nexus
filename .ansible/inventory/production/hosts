@@ -3,7 +3,7 @@ all:
 
     tools:
       hosts:
-        nexus.diesel.net:
+        tools.diesel.net:
         
   vars:
     ansible_user: automation
