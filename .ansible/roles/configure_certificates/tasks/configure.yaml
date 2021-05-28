@@ -1,0 +1,52 @@
+- name: Get all certificates in nexus trust store
+  uri:
+    url: https://{{ proxy.main.host }}/service/rest/v1/security/ssl/truststore
+    method: GET
+    headers:
+      content-type: 'application/json'
+    user: admin
+    password: "{{ admin_password }}"
+    force_basic_auth: yes
+    validate_certs: '{{ validate_certs }}'
+    status_code: 
+      - 200
+  register: response
+
+- name: response
+  debug:
+    msg: '{{ response }}'
+
+- name: Get PEM for `{{ certificate.host }}`
+  uri:
+    url: https://{{ proxy.main.host }}/service/rest/v1/security/ssl/?host={{ certificate.host | urlencode }}&port={{ certificate.port | urlencode }}
+    method: GET
+    headers:
+      content-type: 'application/json'
+    user: admin
+    password: "{{ admin_password }}"
+    force_basic_auth: yes
+    validate_certs: '{{ validate_certs }}'
+    status_code: 
+      - 200
+  register: data
+  when: certificate.host not in response.json | map(attribute='subjectCommonName')
+
+- name: Print certificate
+  debug:
+    msg: '{{ data.json.pem }}'
+  when: certificate.host not in response.json | map(attribute='subjectCommonName')
+
+- name: Add certificate `{{ certificate.host }}` to nexus trust store
+  uri:
+    url: https://{{ proxy.main.host }}/service/rest/v1/security/ssl/truststore
+    method: POST
+    headers:
+      content-type: 'application/json'
+    user: admin
+    password: "{{ admin_password }}"
+    force_basic_auth: yes
+    body_format: json
+    body: '{{ data.json.pem }}'
+    validate_certs: '{{ validate_certs }}'
+    status_code: 201
+  when: certificate.host not in response.json | map(attribute='subjectCommonName')

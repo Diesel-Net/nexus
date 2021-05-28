@@ -1,0 +1,13 @@
+capabilities:
+  
+  - action: capability_Capability
+    method: create
+    data:
+      - id: NX.coreui.model.Capability-3
+        typeId: defaultrole
+        notes: 'Grant anonymous access to anyone that can authenticate'
+        enabled: true
+        properties:
+          role: nx-anonymous
+    type: rpc
+    tid: 91

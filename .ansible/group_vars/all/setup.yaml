@@ -1,0 +1,2 @@
+clean_install: no # NEVER set this to 'yes' in production
+validate_certs: yes

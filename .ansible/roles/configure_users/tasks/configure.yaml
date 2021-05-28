@@ -1,0 +1,47 @@
+- name: Get user `{{ payload.userId }}`
+  uri:
+    url: https://{{ proxy.main.host }}/service/rest/v1/security/users/?userId={{ payload.userId | urlencode }}
+    method: GET
+    headers:
+      content-type: 'application/json'
+    user: admin
+    password: "{{ admin_password }}"
+    force_basic_auth: yes
+    validate_certs: '{{ validate_certs }}'
+    status_code: 
+      - 200
+  register: response
+
+- name: response
+  debug:
+    msg: "{{ response }}"
+
+- name: Create user `{{ payload.userId }}`
+  uri:
+    url: https://{{ proxy.main.host }}/service/rest/v1/security/users
+    method: POST
+    headers:
+      content-type: 'application/json'
+    user: admin
+    password: "{{ admin_password }}"
+    force_basic_auth: yes
+    body_format: json
+    body: '{{ payload | to_json() }}'
+    validate_certs: '{{ validate_certs }}'
+    status_code: 200
+  when: response.json == []
+
+- name: Update user `{{ payload.userId }}`
+  uri:
+    url: https://{{ proxy.main.host }}/service/rest/v1/security/users/{{ payload.userId | urlencode }}
+    method: PUT
+    headers:
+      content-type: 'application/json'
+    user: admin
+    password: "{{ admin_password }}"
+    force_basic_auth: yes
+    body_format: json
+    body: '{{ payload | to_json() }}'
+    validate_certs: '{{ validate_certs }}'
+    status_code: 204
+  when: response.json != []

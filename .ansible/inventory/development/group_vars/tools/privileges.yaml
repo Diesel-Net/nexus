@@ -1,0 +1,20 @@
+privileges:
+
+  - type: application
+    payload:
+      name: test-ldap-domain
+      description: some description
+      actions: # enum: READ, BROWSE, EDIT, ADD, DELETE, RUN, ASSOCIATE, DISASSOCIATE, ALL
+        - READ
+      domain: LDAP
+
+  # - type: repository_view
+  #   payload:
+  #     name: test-repo-view
+  #     description: some description
+  #     actions: # enum: READ, BROWSE, EDIT, ADD, DELETE, RUN, ASSOCIATE, DISASSOCIATE, ALL
+  #       - EDIT
+  #       - ADD
+  #       - BROWSE
+  #       - READ
+

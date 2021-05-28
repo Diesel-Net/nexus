@@ -1,0 +1,5 @@
+- name: Configure cleanup policies
+  include_tasks: configure.yaml
+  loop: '{{ cleanup_policies }}'
+  loop_control:
+    loop_var: payload

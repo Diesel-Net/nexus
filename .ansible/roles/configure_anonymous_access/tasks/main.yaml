@@ -1,0 +1,5 @@
+- name: Configure anonymous access
+  include_tasks: configure.yaml
+  loop: '{{ anonymous_access }}'
+  loop_control:
+    loop_var: payload

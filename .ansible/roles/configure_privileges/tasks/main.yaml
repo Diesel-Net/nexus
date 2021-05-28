@@ -1,0 +1,4 @@
+- include_tasks: configure.yaml
+  loop: '{{ privileges }}'
+  loop_control:
+    loop_var: privilege

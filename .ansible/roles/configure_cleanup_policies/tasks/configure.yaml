@@ -1,0 +1,49 @@
+- name: Get cleanup policy `{{ payload.name }}`
+  uri:
+    url: https://{{ proxy.main.host }}/service/rest/internal/cleanup-policies/{{ payload.name }}
+    method: GET
+    headers:
+      content-type: 'application/json'
+    user: admin
+    password: "{{ admin_password }}"
+    force_basic_auth: yes
+    validate_certs: '{{ validate_certs }}'
+    status_code:
+      - 200
+      - 404
+  register: response
+
+- name: response
+  debug:
+    msg: "{{ response }}"
+
+- name: Create cleanup policy `{{ payload.name }}`
+  uri:
+    url: https://{{ proxy.main.host }}/service/rest/internal/cleanup-policies
+    method: POST
+    headers:
+      content-type: 'application/json'
+    user: admin
+    password: "{{ admin_password }}"
+    force_basic_auth: yes
+    body_format: json
+    body: '{{ payload | to_json() }}'
+    validate_certs: '{{ validate_certs }}'
+    status_code: 200
+  when: response.status == 404
+
+- name: Update cleanup policy `{{ payload.name }}`
+  uri:
+    url: https://{{ proxy.main.host }}/service/rest/internal/cleanup-policies/{{ payload.name }}
+    method: PUT
+    headers:
+      content-type: 'application/json'
+    user: admin
+    password: "{{ admin_password }}"
+    force_basic_auth: yes
+    body_format: json
+    body: '{{ payload | to_json() }}'
+    validate_certs: '{{ validate_certs }}'
+    status_code: 200
+  when: response.status == 200
+

@@ -1,0 +1,40 @@
+# NOTE: Do not name a repo the same name as one of the default repos
+
+default:
+  
+  repositories:
+
+    - format: maven
+      type: proxy
+      payload:
+        name: maven-central
+
+    - format: maven
+      type: group
+      payload:
+        name: maven-public
+
+    - format: maven
+      type: hosted
+      payload:
+        name: maven-releases
+
+    - format: maven
+      type: hosted
+      payload:
+        name: maven-snapshots
+
+    - format: nuget
+      type: group
+      payload:
+        name: nuget-group
+
+    - format: nuget
+      type: hosted
+      payload:
+        name: nuget-hosted
+
+    - format: nuget
+      type: proxy
+      payload:
+        name: nuget.org-proxy

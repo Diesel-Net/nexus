@@ -1,0 +1,13 @@
+- name: Update active realms
+  uri:
+    url: https://{{ proxy.main.host }}/service/rest/v1/security/realms/active
+    method: PUT
+    headers:
+      content-type: 'application/json'
+    user: admin
+    password: "{{ admin_password }}"
+    force_basic_auth: yes
+    body_format: json
+    body: '{{ payload | to_json() }}'
+    validate_certs: '{{ validate_certs }}'
+    status_code: 204

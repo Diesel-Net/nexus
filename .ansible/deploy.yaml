@@ -1,0 +1,17 @@
+# ansible-playbook .ansible/deploy.yaml -i .ansible/inventory/production/hosts --vault-id ~/.tokens/vault.txt
+
+- hosts: tools
+  strategy: free
+  roles:
+    - common
+    - setup
+    - configure_capabilities
+    - configure_certificates
+    - configure_ldap_connections
+    - configure_cleanup_policies
+    - configure_repositories
+    - configure_anonymous_access
+    - configure_active_realms
+    - configure_privileges
+    - configure_roles
+    - configure_users

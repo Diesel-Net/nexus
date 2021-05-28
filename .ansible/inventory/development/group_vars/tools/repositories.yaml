@@ -1,0 +1,143 @@
+repositories:
+
+
+  - format: docker
+    type: hosted
+    payload:
+      name: diesel-docker-hosted
+      online: true
+      storage:
+        blobStoreName: 'default'
+        strictContentTypeValidation: true
+        writePolicy: 'allow' # enum: allow, allow_once, deny
+      cleanup: # optional
+        policyNames: []
+      component: # optional
+        proprietaryComponents: true
+      docker:
+        v1Enabled: false
+        forceBasicAuth: false
+        httpPort: '{{ proxy.docker.port }}'
+
+
+  - format: docker
+    type: proxy
+    payload:
+      name: diesel-docker-proxy
+      online: true
+      storage:
+        blobStoreName: 'default'
+        strictContentTypeValidation: true
+      cleanup:
+        policyNames: []
+      proxy:
+        remoteUrl: 'https://registry-1.docker.io'
+        contentMaxAge: 1440
+        metadataMaxAge: 1440
+      negativeCache:
+        enabled: true
+        timeToLive: 1440
+      httpClient:
+        blocked: false
+        autoBlock: true
+        connection:
+          retries: 0
+          timeout: 60
+          enableCircularRedirects: false
+          enableCookies: false
+          useTrustStore: false
+      docker:
+        v1Enabled: false
+        forceBasicAuth: false
+        httpPort: '{{ proxy.docker.port + 1 }}'
+      dockerProxy:
+        indexType: 'HUB'
+        indexUrl: 'https://index.docker.io/'
+
+
+  - format: npm
+    type: hosted
+    payload:
+      name: diesel-npm-hosted
+      online: true
+      storage:
+        blobStoreName: default
+        strictContentTypeValidation: true
+        writePolicy: allow_once
+      cleanup:
+        policyNames: []
+      component:
+        proprietaryComponents: true
+
+
+  - format: npm
+    type: proxy
+    payload:
+      name: diesel-npm-proxy
+      online: true
+      storage:
+        blobStoreName: default
+        strictContentTypeValidation: true
+      cleanup:
+        policyNames: []
+      proxy:
+        remoteUrl: https://registry.npmjs.org
+        contentMaxAge: 1440
+        metadataMaxAge: 1440
+      negativeCache:
+        enabled: true
+        timeToLive: 1440
+      httpClient:
+        blocked: false
+        autoBlock: true
+        connection:
+          retries: 0
+          timeout: 60
+          enableCircularRedirects: false
+          enableCookies: false
+          useTrustStore: false
+      npm:
+        removeNonCataloged: true
+
+
+  - format: pypi
+    type: hosted
+    payload:
+      name: diesel-pypi-hosted
+      online: true
+      storage:
+        blobStoreName: default
+        strictContentTypeValidation: true
+        writePolicy: allow_once
+      cleanup:
+        policyNames: []
+      component:
+        proprietaryComponents: true
+
+
+  - format: pypi
+    type: proxy
+    payload:
+      name: diesel-pypi-proxy
+      online: true
+      storage:
+        blobStoreName: default
+        strictContentTypeValidation: true
+      cleanup:
+        policyNames: []
+      proxy:
+        remoteUrl: https://pypi.org/
+        contentMaxAge: 1440
+        metadataMaxAge: 1440
+      negativeCache:
+        enabled: true
+        timeToLive: 1440
+      httpClient:
+        blocked: false
+        autoBlock: true
+        connection:
+          retries: 0
+          timeout: 60
+          enableCircularRedirects: false
+          enableCookies: false
+          useTrustStore: false

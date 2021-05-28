@@ -1,0 +1,5 @@
+- name: Configure ldap connections
+  include_tasks: configure.yaml
+  loop: '{{ ldap_connections }}'
+  loop_control:
+    loop_var: payload

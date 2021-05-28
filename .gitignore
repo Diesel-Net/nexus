@@ -1,1 +1,3 @@
-roles/docker-deploy
+.DS_Store
+.ansible/roles/docker_deploy
+.ansible/roles/common

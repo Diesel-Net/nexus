@@ -1,0 +1,35 @@
+cleanup_policies:
+  
+    # pypi example
+  - name: pypi-cleanup
+    format: pypi
+    notes: example cleanup policy
+    criteriaAssetRegex: "*"
+    criteriaLastBlobUpdated: "90"
+    criteriaLastDownloaded: "90"
+
+    # docker example
+  - name: docker-cleanup
+    format: docker
+    notes: example cleanup policy
+    criteriaAssetRegex: "*"
+    criteriaLastBlobUpdated: "90"
+    criteriaLastDownloaded: "90"
+
+    # npm example
+  - name: npm-cleanup
+    format: npm
+    notes: example cleanup policy
+    criteriaAssetRegex: "*"
+    criteriaLastBlobUpdated: "90"
+    criteriaLastDownloaded: "90"
+    criteriaReleaseType: "PRERELEASES" # enum RELEASES, PRERELEASES
+    
+    # nuget example
+  - name: nuget-cleanup
+    format: nuget
+    notes: example cleanup policy
+    criteriaAssetRegex: "*"
+    criteriaLastBlobUpdated: "90"
+    criteriaLastDownloaded: "90"
+

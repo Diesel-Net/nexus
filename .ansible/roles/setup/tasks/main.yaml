@@ -1,0 +1,65 @@
+- include_role:
+    name: docker
+    tasks_from: stack_teardown
+  when: clean_install
+
+- name: Remove the data directory if `clean_install` toggled
+  file:
+    path: '{{ data_dir }}'
+    state: absent
+  become: yes
+  when: clean_install
+
+- include_role:
+    name: common
+    tasks_from: make_data_dir
+
+- include_role:
+    name: docker
+    tasks_from: stack_deploy
+
+- name: Wait for https://{{ proxy.main.host }} to be ready
+  uri:
+    url: https://{{ proxy.main.host }}
+    method: GET
+    validate_certs: '{{ validate_certs }}'
+  register: ui_ready
+  until: ("status" in ui_ready) and (ui_ready.status == 200 or ui_ready.status == 401)
+  retries: 60
+  delay: 1
+
+- name: Check to see if {{ data_dir }}/admin.password exists
+  stat:
+    path: '{{ data_dir }}/admin.password'
+  register: first_install
+
+- debug:
+    msg: '{{ data_dir }}/admin.password exists!'
+  when: first_install.stat.exists
+
+- name: Grab contents of {{ data_dir }}/admin.password
+  wait_for:
+    path: '{{ data_dir }}/admin.password'
+    search_regex: (?P<password>^(.*)$)
+  register: admin_credentials
+  when: first_install.stat.exists
+
+- name: Contents of {{ data_dir }}/admin.password
+  debug:
+    msg: "{{ admin_credentials['match_groupdict']['password'] }}"
+  when: first_install.stat.exists
+
+- name: Change admin password (required on first login)
+  uri:
+    url: https://{{ proxy.main.host }}/service/rest/v1/security/users/admin/change-password
+    method: PUT
+    headers:
+      content-type: 'text/plain'
+    user: admin
+    password: "{{ admin_credentials['match_groupdict']['password'] }}"
+    force_basic_auth: yes
+    body_format: raw
+    body: "{{ admin_password }}"
+    validate_certs: '{{ validate_certs }}'
+    status_code: 204
+  when: first_install.stat.exists
