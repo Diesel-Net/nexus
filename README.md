@@ -1,4 +1,4 @@
-[![Build Status](https://drone-ci.hopto.org/api/badges/Diesel-Net/nexus/status.svg?ref=refs/heads/stable)](https://drone-ci.hopto.org/Diesel-Net/nexus)
+[![Build Status](https://drone.kiwi-labs.net/api/badges/Diesel-Net/nexus/status.svg?ref=refs/heads/stable)](https://drone.kiwi-labs.net/Diesel-Net/nexus)
 
 # nexus
 SonaType Nexus 3 Repository Manager
