@@ -46,6 +46,10 @@ repositories:
           enableCircularRedirects: false
           enableCookies: false
           useTrustStore: false
+        authentication:
+          type: "username"
+          username: "{{ dockerhub_username }}"
+          password: "{{ dockerhub_password }}"
       docker:
         v1Enabled: false
         forceBasicAuth: false
