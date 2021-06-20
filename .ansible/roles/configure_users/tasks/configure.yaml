@@ -1,6 +1,6 @@
 - name: Get user `{{ payload.userId }}`
   uri:
-    url: https://{{ proxy.main.host }}/service/rest/v1/security/users/?userId={{ payload.userId | urlencode }}
+    url: https://{{ proxy[0].host }}/service/rest/v1/security/users/?userId={{ payload.userId | urlencode }}
     method: GET
     headers:
       content-type: 'application/json'
@@ -18,7 +18,7 @@
 
 - name: Create user `{{ payload.userId }}`
   uri:
-    url: https://{{ proxy.main.host }}/service/rest/v1/security/users
+    url: https://{{ proxy[0].host }}/service/rest/v1/security/users
     method: POST
     headers:
       content-type: 'application/json'
@@ -33,7 +33,7 @@
 
 - name: Update user `{{ payload.userId }}`
   uri:
-    url: https://{{ proxy.main.host }}/service/rest/v1/security/users/{{ payload.userId | urlencode }}
+    url: https://{{ proxy[0].host }}/service/rest/v1/security/users/{{ payload.userId | urlencode }}
     method: PUT
     headers:
       content-type: 'application/json'

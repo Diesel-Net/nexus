@@ -1,6 +1,6 @@
 - name: Create capability `{{ payload.typeId }}`
   uri:
-    url: https://{{ proxy.main.host }}/service/extdirect
+    url: https://{{ proxy[0].host }}/service/extdirect
     method: POST
     headers:
       content-type: 'application/json'

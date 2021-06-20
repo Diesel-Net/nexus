@@ -1,6 +1,6 @@
 - name: Get {{ repo.format }} {{ repo.type }} repository `{{ repo.payload.name }}`
   uri:
-    url: https://{{ proxy.main.host }}/service/rest/v1/repositories/{{ repo.format }}/{{ repo.type }}/{{ repo.payload.name }}
+    url: https://{{ proxy[0].host }}/service/rest/v1/repositories/{{ repo.format }}/{{ repo.type }}/{{ repo.payload.name }}
     method: GET
     headers:
       content-type: 'application/json'
@@ -19,7 +19,7 @@
 
 - name: Remove repository `{{ repo.payload.name }}`
   uri:
-    url: https://{{ proxy.main.host }}/service/rest/v1/repositories/{{ repo.payload.name }}
+    url: https://{{ proxy[0].host }}/service/rest/v1/repositories/{{ repo.payload.name }}
     method: DELETE
     headers:
       content-type: 'application/json'
