@@ -17,7 +17,7 @@ repositories:
       docker:
         v1Enabled: false
         forceBasicAuth: false
-        httpPort: '{{ proxy.docker.port }}'
+        httpPort: '{{ proxy[1].port }}'
 
 
   - format: docker
@@ -46,10 +46,14 @@ repositories:
           enableCircularRedirects: false
           enableCookies: false
           useTrustStore: false
+        authentication:
+            type: "username"
+            username: "{{ dockerhub_username }}"
+            password: "{{ dockerhub_password }}"
       docker:
         v1Enabled: false
         forceBasicAuth: false
-        httpPort: '{{ proxy.docker.port + 1 }}'
+        httpPort: '{{ proxy[2].port }}'
       dockerProxy:
         indexType: 'HUB'
         indexUrl: 'https://index.docker.io/'

@@ -18,9 +18,9 @@
     name: docker
     tasks_from: stack_deploy
 
-- name: Wait for https://{{ proxy.main.host }} to be ready
+- name: Wait for https://{{ proxy[0].host }} to be ready
   uri:
-    url: https://{{ proxy.main.host }}
+    url: https://{{ proxy[0].host }}
     method: GET
     validate_certs: '{{ validate_certs }}'
   register: ui_ready
@@ -51,7 +51,7 @@
 
 - name: Change admin password (required on first login)
   uri:
-    url: https://{{ proxy.main.host }}/service/rest/v1/security/users/admin/change-password
+    url: https://{{ proxy[0].host }}/service/rest/v1/security/users/admin/change-password
     method: PUT
     headers:
       content-type: 'text/plain'

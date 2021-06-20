@@ -1,6 +1,6 @@
 - name: Update active realms
   uri:
-    url: https://{{ proxy.main.host }}/service/rest/v1/security/realms/active
+    url: https://{{ proxy[0].host }}/service/rest/v1/security/realms/active
     method: PUT
     headers:
       content-type: 'application/json'
