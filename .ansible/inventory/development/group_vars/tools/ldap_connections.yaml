@@ -21,7 +21,7 @@ ldap_connections:
     userLdapFilter:
     userIdAttribute: uid
     userRealNameAttribute: cn
-    userEmailAddressAttribute: ''
+    userEmailAddressAttribute: mail
     userPasswordAttribute: Password
     ldapGroupsAsRoles: true
     groupType: DYNAMIC #enum STATIC, DYNAMIC
