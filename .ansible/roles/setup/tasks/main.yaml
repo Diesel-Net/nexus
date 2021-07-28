@@ -30,7 +30,7 @@
 
 - name: Pause so that all API endpoints are started
   pause:
-    seconds: 20
+    seconds: 30
 
 - name: Check to see if {{ data_dir }}/admin.password exists
   stat:
