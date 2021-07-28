@@ -4,7 +4,7 @@ services:
   main:
     image: sonatype/nexus3:3.31.0
     volumes:
-      - {{ ssl_cert_dir }}:/etc/ssl/certs/
+      - {{ ssl_cert_dir }}/:/etc/ssl/certs/
       - {{ data_dir }}:/nexus-data/
     user: "${UID}:${GID}"
     deploy:
