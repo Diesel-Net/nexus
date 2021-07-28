@@ -27,7 +27,7 @@ ldap_connections:
     groupType: DYNAMIC #enum STATIC, DYNAMIC
     groupBaseDn: ou=groups,dc=diesel,dc=net
     groupSubtree: true
-    groupObjectClass: groupOfUniqueNames
+    groupObjectClass: ''
     groupIdAttribute: ''
     groupMemberAttribute: ''
     groupMemberFormat: ''
