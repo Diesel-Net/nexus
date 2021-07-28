@@ -1,35 +1,35 @@
 
 
-ldap_connections: 
+ldap_connections: []
 
-  - name: diesel-ldap
-    protocol: LDAPS
-    useTrustStore: true
-    host: ldap.dev.diesel.net
-    port: 636
-    searchBase: dc=diesel,dc=net
-    authScheme: SIMPLE # enum: NONE, SIMPLE, DIGEST_MD5, CRAM_MD5
-    authRealm: ''
-    authUsername: cn=admin,dc=diesel,dc=net
-    authPassword: ldap
-    connectionTimeoutSeconds: 30
-    connectionRetryDelaySeconds: 300
-    maxIncidentsCount: 3
-    userBaseDn: cn=users,dc=diesel,dc=net
-    userSubtree: true
-    userObjectClass: posixAccount
-    userLdapFilter:
-    userIdAttribute: uid
-    userRealNameAttribute: cn
-    userEmailAddressAttribute: mail
-    userPasswordAttribute: Password
-    ldapGroupsAsRoles: true
-    groupType: DYNAMIC #enum STATIC, DYNAMIC
-    groupBaseDn: cn=groups,dc=diesel,dc=net
-    groupSubtree: true
-    groupObjectClass: groupOfUniqueNames
-    groupIdAttribute: ''
-    groupMemberAttribute: ''
-    groupMemberFormat: ''
-    userMemberOfAttribute: memberOf
+  # - name: diesel-ldap
+  #   protocol: LDAPS
+  #   useTrustStore: true
+  #   host: ldap.dev.diesel.net
+  #   port: 636
+  #   searchBase: dc=diesel,dc=net
+  #   authScheme: SIMPLE # enum: NONE, SIMPLE, DIGEST_MD5, CRAM_MD5
+  #   authRealm: ''
+  #   authUsername: cn=admin,dc=diesel,dc=net
+  #   authPassword: ldap
+  #   connectionTimeoutSeconds: 30
+  #   connectionRetryDelaySeconds: 300
+  #   maxIncidentsCount: 3
+  #   userBaseDn: cn=users,dc=diesel,dc=net
+  #   userSubtree: true
+  #   userObjectClass: posixAccount
+  #   userLdapFilter:
+  #   userIdAttribute: uid
+  #   userRealNameAttribute: cn
+  #   userEmailAddressAttribute: mail
+  #   userPasswordAttribute: Password
+  #   ldapGroupsAsRoles: true
+  #   groupType: DYNAMIC #enum STATIC, DYNAMIC
+  #   groupBaseDn: cn=groups,dc=diesel,dc=net
+  #   groupSubtree: true
+  #   groupObjectClass: groupOfUniqueNames
+  #   groupIdAttribute: ''
+  #   groupMemberAttribute: ''
+  #   groupMemberFormat: ''
+  #   userMemberOfAttribute: memberOf
     
