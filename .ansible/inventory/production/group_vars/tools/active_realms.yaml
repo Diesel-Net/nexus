@@ -3,7 +3,7 @@ active_realms:
   - 'NexusAuthenticatingRealm'
   - 'NexusAuthorizingRealm'
   - 'DefaultRole'
-  #- 'LdapRealm'
+  - 'LdapRealm'
   - 'DockerToken'
   - 'NpmToken'
   - 'NuGetApiKey'
