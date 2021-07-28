@@ -1,7 +1,7 @@
 roles:
 
-  - id: Diesel-Net-Core
-    name: Core Developers
+  - id: developer
+    name: developer
     description: Core Development Team
     privileges:
       - nx-repository-admin-*-*-add
