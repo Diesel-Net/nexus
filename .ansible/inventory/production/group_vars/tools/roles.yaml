@@ -1,7 +1,7 @@
 roles:
 
   - id: developer
-    name: Core Developers
+    name: developer
     description: Core Development Team
     privileges:
       - nx-repository-admin-*-*-add
