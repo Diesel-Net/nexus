@@ -13,7 +13,7 @@ ldap_connections:
     connectionTimeoutSeconds: 30
     connectionRetryDelaySeconds: 300
     maxIncidentsCount: 3
-    userBaseDn: ou=users,dc=diesel,dc=net
+    userBaseDn: ou=users
     userSubtree: true
     userObjectClass: posixAccount
     userLdapFilter:
@@ -23,7 +23,7 @@ ldap_connections:
     userPasswordAttribute:
     ldapGroupsAsRoles: true
     groupType: DYNAMIC #enum STATIC, DYNAMIC
-    groupBaseDn: ou=groups,dc=diesel,dc=net
+    groupBaseDn: ou=groups
     groupSubtree: true
     groupObjectClass: ''
     groupIdAttribute: ''
