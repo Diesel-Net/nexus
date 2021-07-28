@@ -1,13 +1,13 @@
 [![Build Status](https://drone.kiwi-labs.net/api/badges/Diesel-Net/nexus/status.svg?ref=refs/heads/stable)](https://drone.kiwi-labs.net/Diesel-Net/nexus)
 
 # nexus
-SonaType Nexus 3 Repository Manager
+[SonaType Nexus Repository Manager 3](https://help.sonatype.com/repomanager3) on docker swarm.
 
 
 ## REST API
 
 ### Authentication
-The OpenAPI specification file displayed through the WebUI does **not** seem to go into any details about authentication. They do not have it documented anywhere from what I can tell, however from my own experimentation I found that the API permits `Basic-Auth` so we just need to include the Authorization header with value `Basic username:password` where the part `username:password` is base64 encoded on every request.
+The API permits `Basic-Auth` so we just need to include the Authorization header with value `Basic username:password` where the part `username:password` is base64 encoded on every request.
 
 e.g. `Authorization: Basic YWRtaW46bmV4dXM=`
 

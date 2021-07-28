@@ -1,7 +1,7 @@
 # ansible-playbook .ansible/deploy.yaml -i .ansible/inventory/production/hosts --vault-id ~/.tokens/vault.txt
 
 - hosts: tools
-  strategy: free
+  strategy: linear
   roles:
     - common
     - setup
