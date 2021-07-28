@@ -1,6 +1,6 @@
 roles:
 
-  - id: Diesel-Net-Core
+  - id: developer
     name: Core Developers
     description: Core Development Team
     privileges:
