@@ -9,7 +9,7 @@ ldap_connections:
     port: 636
     searchBase: dc=diesel,dc=net
     authScheme: SIMPLE # enum: NONE, SIMPLE, DIGEST_MD5, CRAM_MD5
-    authRealm:
+    authRealm: ''
     authUsername: cn=admin,dc=diesel,dc=net
     authPassword: ldap
     connectionTimeoutSeconds: 30
@@ -21,15 +21,15 @@ ldap_connections:
     userLdapFilter:
     userIdAttribute: uid
     userRealNameAttribute: cn
-    userEmailAddressAttribute:
+    userEmailAddressAttribute: ''
     userPasswordAttribute: Password
     ldapGroupsAsRoles: true
     groupType: DYNAMIC #enum STATIC, DYNAMIC
     groupBaseDn: cn=groups,dc=diesel,dc=net
     groupSubtree: true
     groupObjectClass: groupOfUniqueNames
-    groupIdAttribute:
-    groupMemberAttribute:
-    groupMemberFormat:
+    groupIdAttribute: ''
+    groupMemberAttribute: ''
+    groupMemberFormat: ''
     userMemberOfAttribute: memberOf
     
