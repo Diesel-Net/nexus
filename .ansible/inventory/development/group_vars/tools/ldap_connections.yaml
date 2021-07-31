@@ -1,5 +1,3 @@
-
-
 ldap_connections:
 
   - name: diesel-ldap
