@@ -18,7 +18,7 @@ steps:
       extra_vars:
         - clean_install=yes
       private_key:
-        from_secret: ansible_private_key
+        from_secret: automation_id_rsa
       vault_password:
         from_secret: ansible_vault_password
 
@@ -31,7 +31,7 @@ steps:
       galaxy: .ansible/roles/requirements.yaml
       inventory: .ansible/inventory/development/hosts
       private_key:
-        from_secret: ansible_private_key
+        from_secret: automation_id_rsa
       vault_password:
         from_secret: ansible_vault_password
 
@@ -54,12 +54,14 @@ steps:
     image: plugins/ansible:3
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
+      LDAP_ADMIN_PASSWORD:
+        from_secret: ldap_admin_password
     settings:
       playbook: .ansible/deploy.yaml
       galaxy: .ansible/roles/requirements.yaml
       inventory: .ansible/inventory/production/hosts
       private_key:
-        from_secret: ansible_private_key
+        from_secret: automation_id_rsa
       vault_password:
         from_secret: ansible_vault_password
 
