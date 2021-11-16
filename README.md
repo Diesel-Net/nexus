@@ -4,7 +4,7 @@
 [SonaType Nexus Repository Manager 3](https://help.sonatype.com/repomanager3) on docker swarm.
 
 
-## REST API
+## Notes on the REST API
 
 ### Authentication
 The API permits `Basic-Auth` so we just need to include the Authorization header with value `Basic username:password` where the part `username:password` is base64 encoded on every request.
