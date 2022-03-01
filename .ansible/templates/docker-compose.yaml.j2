@@ -2,7 +2,7 @@ version: '3.8'
 services: 
 
   main:
-    image: sonatype/nexus3:3.36.0
+    image: sonatype/nexus3:3.37.3
     volumes:
       - {{ ssl_cert_file }}:/etc/ssl/certs/ca-certificates.crt
       - {{ data_dir }}:/nexus-data/
