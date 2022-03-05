@@ -102,7 +102,7 @@ repositories:
           timeout: 30
           enableCircularRedirects: true
           enableCookies: true
-          useTrustStore: true
+          useTrustStore: false
         # authentication:
         #   type: username
         #   username: string
