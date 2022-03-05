@@ -87,7 +87,7 @@ repositories:
       cleanup:
         policyNames: []
       proxy:
-        remoteUrl: http://us.archive.ubuntu.com
+        remoteUrl: http://us.archive.ubuntu.com/ubuntu
         contentMaxAge: 1440
         metadataMaxAge: 1440
       negativeCache:
