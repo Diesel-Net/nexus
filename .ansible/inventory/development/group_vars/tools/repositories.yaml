@@ -79,7 +79,7 @@ repositories:
   - format: apt
     type: proxy
     payload:
-      name: apt-proxy-ubuntu
+      name: ubuntu-apt-proxy
       online: true
       storage:
         blobStoreName: default
