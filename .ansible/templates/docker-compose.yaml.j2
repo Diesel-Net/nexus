@@ -2,9 +2,9 @@ version: '3.8'
 services: 
 
   main:
-    image: sonatype/nexus3:3.40.1
+    image: sonatype/nexus3:3.41.0
     volumes:
-      - {{ ssl_cert_file }}:/etc/ssl/certs/ca-certificates.crt
+      - /etc/ssl/certs/ca-certificates.crt:/etc/ssl/certs/ca-certificates.crt
       - {{ data_dir }}:/nexus-data/
     user: "${UID}:${GID}"
     deploy:
@@ -19,9 +19,9 @@ services:
 {% endfor %}
 
     networks:
-      - {{ docker_network }}
+      - {{ traefik_network }}
       
 networks:
-  {{ docker_network }}:
+  {{ traefik_network }}:
     external:
-      name: {{ docker_network }}
+      name: {{ traefik_network }}
