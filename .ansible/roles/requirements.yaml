@@ -7,3 +7,8 @@
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-docker.git"
   version: 2.0.0
+
+- name: traefik
+  scm: git
+  src: "git@github.com:Diesel-Net/ansible-role-traefik.git"
+  version: 2.0.0
