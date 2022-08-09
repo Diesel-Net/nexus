@@ -2,6 +2,7 @@
   strategy: linear
   roles:
     - application
+    - traefik
     - setup
     - configure_capabilities
     - configure_certificates
