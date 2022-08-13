@@ -59,7 +59,7 @@ steps:
     settings:
       playbook: .ansible/deploy.yaml
       galaxy: .ansible/roles/requirements.yaml
-      inventory: .ansible/inventory/prod
+      inventory: .ansible/inventories/prod
       private_key:
         from_secret: automation_id_rsa
       vault_password:
