@@ -8,13 +8,13 @@ clone:
 
 steps:
   - name: Clean install (data is wiped)
-    image: plugins/ansible:3
+    image: docker.nexus.diesel.net/drone-ansible:2.13
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
     settings:
       playbook: .ansible/deploy.yaml
       galaxy: .ansible/roles/requirements.yaml
-      inventory: .ansible/inventory/development/hosts
+      inventory: .ansible/inventories/dev
       extra_vars:
         - clean_install=yes
       private_key:
@@ -23,13 +23,13 @@ steps:
         from_secret: ansible_vault_password
 
   - name: Configuration update (data is not wiped)
-    image: plugins/ansible:3
+    image: docker.nexus.diesel.net/drone-ansible:2.13
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
     settings:
       playbook: .ansible/deploy.yaml
       galaxy: .ansible/roles/requirements.yaml
-      inventory: .ansible/inventory/development/hosts
+      inventory: .ansible/inventories/dev
       private_key:
         from_secret: automation_id_rsa
       vault_password:
@@ -51,7 +51,7 @@ clone:
 
 steps:
   - name: Configuration update
-    image: plugins/ansible:3
+    image: docker.nexus.diesel.net/drone-ansible:2.13
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
       LDAP_ADMIN_PASSWORD:
@@ -59,7 +59,7 @@ steps:
     settings:
       playbook: .ansible/deploy.yaml
       galaxy: .ansible/roles/requirements.yaml
-      inventory: .ansible/inventory/production/hosts
+      inventory: .ansible/inventory/prod
       private_key:
         from_secret: automation_id_rsa
       vault_password:

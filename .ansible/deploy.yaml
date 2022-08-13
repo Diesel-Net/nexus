@@ -1,7 +1,8 @@
-- hosts: tools
+- hosts: swarm_manager
   strategy: linear
   roles:
-    - common
+    - application
+    - traefik
     - setup
     - configure_capabilities
     - configure_certificates
