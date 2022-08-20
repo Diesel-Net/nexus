@@ -25,7 +25,7 @@ services:
     networks:
       - {{ traefik_network }}
 
-{% if nfs_host %}
+{% if nfs_host is defined %}
 volumes:
   nexus-database:
     driver: local
