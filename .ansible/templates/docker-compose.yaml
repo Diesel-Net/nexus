@@ -5,7 +5,7 @@ services:
     image: sonatype/nexus3:3.41.0
     volumes:
       - /etc/ssl/certs/ca-certificates.crt:/etc/ssl/certs/ca-certificates.crt
-{% if nfs_host %}
+{% if nfs_host is defined %}
       - nexus-database:/nexus-data/
 {% else %}
       - {{ data_dir }}:/nexus-data/
