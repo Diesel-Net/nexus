@@ -3,9 +3,6 @@ kind: pipeline
 type: docker
 name: development pipeline
 
-clone:
-  depth: 1
-
 steps:
   - name: Clean install (data is wiped)
     image: docker.nexus.diesel.net/drone-ansible:2.13
@@ -45,9 +42,6 @@ trigger:
 kind: pipeline
 type: docker
 name: production pipeline
-
-clone:
-  depth: 1
 
 steps:
   - name: Configuration update
