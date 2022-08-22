@@ -31,7 +31,7 @@ volumes:
     driver: local
     driver_opts:
       type: nfs
-      o: addr={{ nfs_host }},rw,nfsvers=4,async
+      o: addr={{ nfs_host }},hard,nolock,rw,nfsvers=4,async
       device: :{{ nfs_path }}
 {% endif %}
 
