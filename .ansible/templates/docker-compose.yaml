@@ -6,7 +6,7 @@ services:
     volumes:
       - /etc/ssl/certs/ca-certificates.crt:/etc/ssl/certs/ca-certificates.crt
 {% if nfs_host is defined %}
-      - nexus-database:/nexus-data
+      - nexus-database:/nexus-data:Z
 {% else %}
       - {{ data_dir }}:/nexus-data
 {% endif %}
