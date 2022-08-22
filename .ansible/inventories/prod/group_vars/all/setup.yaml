@@ -6,5 +6,5 @@ admin_password: !vault |
   6338643831346261640a663730343764316134323730653536326464303835343039303339643833
   6239
 
-#nfs_host: nas.diesel.net
-#nfs_path: /volume1/Nexus
+nfs_host: nas.diesel.net
+nfs_path: /volume1/Nexus
