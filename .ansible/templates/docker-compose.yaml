@@ -6,9 +6,9 @@ services:
     volumes:
       - /etc/ssl/certs/ca-certificates.crt:/etc/ssl/certs/ca-certificates.crt
 {% if nfs_host is defined %}
-      - nexus-database:/nexus-data/
+      - nexus-database:/nexus-data
 {% else %}
-      - {{ data_dir }}:/nexus-data/
+      - {{ data_dir }}:/nexus-data
 {% endif %}
     user: "${UID}:${GID}"
     deploy:
@@ -31,7 +31,7 @@ volumes:
     driver: local
     driver_opts:
       type: nfs
-      o: addr={{ nfs_host }},hard,nolock,rw,nfsvers=4,async
+      o: addr={{ nfs_host }},hard,lock,rw,nfsvers=4,async
       device: :{{ nfs_path }}
 {% endif %}
 
