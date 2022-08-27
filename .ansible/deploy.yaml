@@ -80,6 +80,8 @@
 - hosts: swarm_manager
   strategy: linear
   roles:
+    - application
+    - traefik
     - configure_capabilities
     - configure_certificates
     - configure_ldap_connections
