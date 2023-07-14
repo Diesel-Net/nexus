@@ -215,6 +215,7 @@ repositories:
           useTrustStore: false
       npm:
         removeNonCataloged: true
+        removeQuarantined: true
 
 
   - format: pypi
