@@ -214,9 +214,6 @@ repositories:
           enableCircularRedirects: false
           enableCookies: false
           useTrustStore: false
-      npm:
-        removeNonCataloged: true
-        removeQuarantined: true
 
 
   - format: pypi
