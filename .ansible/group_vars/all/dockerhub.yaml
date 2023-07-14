@@ -1,2 +1,2 @@
 dockerhub_username: '{{ lookup("env", "DOCKERHUB_USERNAME") }}'
-dockerhub_username: '{{ lookup("env", "DOCKERHUB_PASSWORD") }}'
+dockerhub_password: '{{ lookup("env", "DOCKERHUB_PASSWORD") }}'
