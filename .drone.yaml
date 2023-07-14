@@ -8,6 +8,10 @@ steps:
     image: docker.nexus.diesel.net/drone-ansible:2.13
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
+      DOCKERHUB_USERNAME:
+        from_secret: dockerhub_username
+      DOCKERHUB_PASSWORD:
+        from_secret: dockerhub_password
     settings:
       playbook: .ansible/deploy.yaml
       galaxy: .ansible/roles/requirements.yaml
@@ -23,6 +27,10 @@ steps:
     image: docker.nexus.diesel.net/drone-ansible:2.13
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
+      DOCKERHUB_USERNAME:
+        from_secret: dockerhub_username
+      DOCKERHUB_PASSWORD:
+        from_secret: dockerhub_password
     settings:
       playbook: .ansible/deploy.yaml
       galaxy: .ansible/roles/requirements.yaml
@@ -48,8 +56,10 @@ steps:
     image: docker.nexus.diesel.net/drone-ansible:2.13
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
-      LDAP_ADMIN_PASSWORD:
-        from_secret: ldap_admin_password
+      DOCKERHUB_USERNAME:
+        from_secret: dockerhub_username
+      DOCKERHUB_PASSWORD:
+        from_secret: dockerhub_password
     settings:
       playbook: .ansible/deploy.yaml
       galaxy: .ansible/roles/requirements.yaml
