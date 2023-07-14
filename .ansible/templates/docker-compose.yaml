@@ -2,7 +2,7 @@ version: '3.8'
 services: 
 
   main:
-    image: sonatype/nexus3:3.55.0
+    image: sonatype/nexus3:3.57.0
     volumes:
       - /etc/ssl/certs/ca-certificates.crt:/etc/ssl/certs/ca-certificates.crt
 {% if nfs_host is defined %}

@@ -1,3 +1,1 @@
-certificates:
-  - host: '{{ ldap_connections[0]["host"] }}'
-    port: '{{ ldap_connections[0]["port"] }}'
+certificates: []
