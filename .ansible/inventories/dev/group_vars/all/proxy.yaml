@@ -8,7 +8,7 @@ proxy:
     
   - service: '{{ app_name }}-docker-registry'
     port: 8082
-    router: '{{ app_ name }}-docker-registry'
+    router: '{{ app_name }}-docker-registry'
     diesel_host: docker.nexus.dev.diesel.net
     kiwi_host: docker.nexus.dev.kiwi-labs.net
 
