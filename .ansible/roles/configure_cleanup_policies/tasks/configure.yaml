@@ -1,6 +1,6 @@
 - name: Get cleanup policy `{{ payload.name }}`
   uri:
-    url: https://{{ proxy[0].host }}/service/rest/internal/cleanup-policies/{{ payload.name }}
+    url: https://{{ proxy[0].diesel_host }}/service/rest/internal/cleanup-policies/{{ payload.name }}
     method: GET
     headers:
       content-type: 'application/json'
@@ -19,7 +19,7 @@
 
 - name: Create cleanup policy `{{ payload.name }}`
   uri:
-    url: https://{{ proxy[0].host }}/service/rest/internal/cleanup-policies
+    url: https://{{ proxy[0].diesel_host }}/service/rest/internal/cleanup-policies
     method: POST
     headers:
       content-type: 'application/json'
@@ -34,7 +34,7 @@
 
 - name: Update cleanup policy `{{ payload.name }}`
   uri:
-    url: https://{{ proxy[0].host }}/service/rest/internal/cleanup-policies/{{ payload.name }}
+    url: https://{{ proxy[0].diesel_host }}/service/rest/internal/cleanup-policies/{{ payload.name }}
     method: PUT
     headers:
       content-type: 'application/json'

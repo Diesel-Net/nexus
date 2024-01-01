@@ -1,7 +1,6 @@
 active_realms:
   
   - 'NexusAuthenticatingRealm'
-  - 'NexusAuthorizingRealm'
   - 'DefaultRole'
   - 'LdapRealm'
   - 'DockerToken'

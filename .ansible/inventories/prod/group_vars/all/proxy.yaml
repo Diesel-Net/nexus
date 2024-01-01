@@ -1,16 +1,19 @@
 proxy:
   
-  - service: '{{ git_repository }}-{{ git_branch }}-main'
+  - service: '{{ app_name }}-webui'
     port: 8081
-    router: '{{ git_repository }}-{{ git_branch }}-main'
-    host: nexus.diesel.net
+    router: '{{ app_name }}-webui'
+    diesel_host: nexus.diesel.net
+    kiwi_host: nexus.kiwi-labs.net
     
-  - service: '{{ git_repository }}-{{ git_branch }}-docker'
+  - service: '{{ app_name }}-docker-registry'
     port: 8082
-    router: '{{ git_repository }}-{{ git_branch }}-docker'
-    host: docker.nexus.diesel.net
+    router: '{{ app_name }}-docker-registry'
+    diesel_host: docker.nexus.diesel.net
+    kiwi_host: docker.nexus.kiwi-labs.net
 
-  - service: '{{ git_repository }}-{{ git_branch }}-docker-proxy'
+  - service: '{{ app_name }}-dockerhub-cache'
     port: 8083
-    router: '{{ git_repository }}-{{ git_branch }}-docker-proxy'
-    host: dockerhub.nexus.diesel.net
+    router: '{{ app_name }}-dockerhub-cache'
+    diesel_host: dockerhub.nexus.diesel.net
+    kiwi_host: dockerhub.nexus.kiwi-labs.net

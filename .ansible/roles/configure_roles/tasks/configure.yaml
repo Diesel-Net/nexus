@@ -1,6 +1,6 @@
 - name: Get role `{{ payload.id }}`
   uri:
-    url: https://{{ proxy[0].host }}/service/rest/v1/security/roles/{{ payload.id | urlencode }}
+    url: https://{{ proxy[0].diesel_host }}/service/rest/v1/security/roles/{{ payload.id | urlencode }}
     method: GET
     headers:
       content-type: 'application/json'
@@ -19,7 +19,7 @@
 
 - name: Create role `{{ payload.id }}`
   uri:
-    url: https://{{ proxy[0].host }}/service/rest/v1/security/roles
+    url: https://{{ proxy[0].diesel_host }}/service/rest/v1/security/roles
     method: POST
     headers:
       content-type: 'application/json'
@@ -34,7 +34,7 @@
 
 - name: Update role `{{ payload.id }}`
   uri:
-    url: https://{{ proxy[0].host }}/service/rest/v1/security/roles/{{ payload.id | urlencode }}
+    url: https://{{ proxy[0].diesel_host }}/service/rest/v1/security/roles/{{ payload.id | urlencode }}
     method: PUT
     headers:
       content-type: 'application/json'

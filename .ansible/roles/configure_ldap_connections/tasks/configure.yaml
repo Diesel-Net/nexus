@@ -1,6 +1,6 @@
 - name: Get ldap connection `{{ payload.name }}`
   uri:
-    url: https://{{ proxy[0].host }}/service/rest/v1/security/ldap/{{ payload.name }}
+    url: https://{{ proxy[0].diesel_host }}/service/rest/v1/security/ldap/{{ payload.name }}
     method: GET
     headers:
       content-type: 'application/json'
@@ -19,7 +19,7 @@
 
 - name: Create ldap connection `{{ payload.name }}`
   uri:
-    url: https://{{ proxy[0].host }}/service/rest/v1/security/ldap
+    url: https://{{ proxy[0].diesel_host }}/service/rest/v1/security/ldap
     method: POST
     headers:
       content-type: 'application/json'
@@ -34,7 +34,7 @@
 
 - name: Update ldap connection `{{ payload.name }}`
   uri:
-    url: https://{{ proxy[0].host }}/service/rest/v1/security/ldap/{{ payload.name }}
+    url: https://{{ proxy[0].diesel_host }}/service/rest/v1/security/ldap/{{ payload.name }}
     method: PUT
     headers:
       content-type: 'application/json'

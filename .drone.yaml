@@ -5,7 +5,7 @@ name: development pipeline
 
 steps:
   - name: Clean install (data is wiped)
-    image: docker.nexus.diesel.net/drone-ansible:2.13
+    image: docker.nexus.diesel.net/drone-ansible:7.2.0
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
       DOCKERHUB_USERNAME:
@@ -24,7 +24,7 @@ steps:
         from_secret: ansible_vault_password
 
   - name: Configuration update (data is not wiped)
-    image: docker.nexus.diesel.net/drone-ansible:2.13
+    image: docker.nexus.diesel.net/drone-ansible:7.2.0
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
       DOCKERHUB_USERNAME:
@@ -53,7 +53,7 @@ name: production pipeline
 
 steps:
   - name: Configuration update
-    image: docker.nexus.diesel.net/drone-ansible:2.13
+    image: docker.nexus.diesel.net/drone-ansible:7.2.0
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
       DOCKERHUB_USERNAME:
