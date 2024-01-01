@@ -17,10 +17,18 @@ services:
 
 {% for item in proxy %}
         - traefik.http.services.{{ item.service }}.loadbalancer.server.port={{ item.port }}
-        - traefik.http.routers.{{ item.router }}.rule=Host(`{{ item.host }}`)
-        - traefik.http.routers.{{ item.router }}.service={{ item.service }}
-        - traefik.http.routers.{{ item.router }}.tls.certresolver=step-ca
+        
+        - traefik.http.routers.diesel-{{ item.router }}.rule=Host(`{{ item.diesel_host }}`)
+        - traefik.http.routers.diesel-{{ item.router }}.service={{ item.service }}@docker
+        - traefik.http.routers.diesel-{{ item.router }}.tls.certresolver=step-ca
+
+        - traefik.http.routers.kiwi-{{ item.router }}.rule=Host(`{{ item.kiwi_host }}`)
+        - traefik.http.routers.kiwi-{{ item.router }}.service={{ item.service }}@docker
+        - traefik.http.routers.kiwi-{{ item.router }}.tls.certresolver=cloudflare
+        - traefik.http.routers.kiwi-{{ item.router }}.tls.domains[0].main={{ '.'.join( item.kiwi_host.split('.')[1:] ) }}
+        - traefik.http.routers.kiwi-{{ item.router }}.tls.domains[0].sans=*.{{ '.'.join( item.kiwi_host.split('.')[1:] ) }}
 {% endfor %}
+
 
     networks:
       - {{ traefik_network }}
