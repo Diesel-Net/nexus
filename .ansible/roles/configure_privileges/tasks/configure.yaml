@@ -1,6 +1,6 @@
 - name: Get privilege `{{ privilege.payload.name }}`
   uri:
-    url: https://{{ proxy[0].host }}/service/rest/v1/security/privileges/{{ privilege.payload.name }}
+    url: https://{{ proxy[0].diesel_host }}/service/rest/v1/security/privileges/{{ privilege.payload.name }}
     method: GET
     headers:
       content-type: 'application/json'
@@ -19,7 +19,7 @@
 
 - name: Create {{ privilege.type }} privilege `{{ privilege.payload.name }}`
   uri:
-    url: https://{{ proxy[0].host }}/service/rest/v1/security/privileges/{{ privilege.type }}
+    url: https://{{ proxy[0].diesel_host }}/service/rest/v1/security/privileges/{{ privilege.type }}
     method: POST
     headers:
       content-type: 'application/json'
@@ -34,7 +34,7 @@
 
 - name: Update {{ privilege.type }} privilege `{{ privilege.payload.name }}`
   uri:
-    url: https://{{ proxy[0].host }}/service/rest/v1/security/privileges/{{ privilege.type }}/{{ privilege.payload.name }}
+    url: https://{{ proxy[0].diesel_host }}/service/rest/v1/security/privileges/{{ privilege.type }}/{{ privilege.payload.name }}
     method: PUT
     headers:
       content-type: 'application/json'

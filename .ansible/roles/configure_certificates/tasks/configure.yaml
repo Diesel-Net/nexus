@@ -1,6 +1,6 @@
 - name: Get all certificates in nexus trust store
   uri:
-    url: https://{{ proxy[0].host }}/service/rest/v1/security/ssl/truststore
+    url: https://{{ proxy[0].diesel_host }}/service/rest/v1/security/ssl/truststore
     method: GET
     headers:
       content-type: 'application/json'
@@ -18,7 +18,7 @@
 
 - name: Get PEM for `{{ certificate.host }}`
   uri:
-    url: https://{{ proxy[0].host }}/service/rest/v1/security/ssl/?host={{ certificate.host | urlencode }}&port={{ certificate.port | urlencode }}
+    url: https://{{ proxy[0].diesel_host }}/service/rest/v1/security/ssl/?host={{ certificate.host | urlencode }}&port={{ certificate.port | urlencode }}
     method: GET
     headers:
       content-type: 'application/json'
@@ -38,7 +38,7 @@
 
 - name: Add certificate `{{ certificate.host }}` to nexus trust store
   uri:
-    url: https://{{ proxy[0].host }}/service/rest/v1/security/ssl/truststore
+    url: https://{{ proxy[0].diesel_host }}/service/rest/v1/security/ssl/truststore
     method: POST
     headers:
       content-type: 'application/json'

@@ -1,6 +1,6 @@
 - name: Configure anonymous access for `{{ payload.realmName }}`
   uri:
-    url: https://{{ proxy[0].host }}/service/rest/v1/security/anonymous
+    url: https://{{ proxy[0].diesel_host }}/service/rest/v1/security/anonymous
     method: PUT
     headers:
       content-type: 'application/json'
